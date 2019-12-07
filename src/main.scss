@@ -1,0 +1,627 @@
+@import url('https://fonts.googleapis.com/css?family=Fira+Mono:500|Fira+Sans:100,500|Montserrat:600');
+
+@import './vendor/bootstrap-4.1.3/scss/bootstrap-grid.scss';
+
+// COLORS
+
+$lightGrey: #EEEEEE;
+$blueGrey: #90A4AE; 
+$darkGrey: #191B1F;
+$darkerGrey: #070809;
+
+$mainBackgroundColor: $darkGrey;
+$boxBackgroundColor: $darkerGrey;
+$highlightBackgroundColor: $blueGrey;
+$highlightTextColor: $darkerGrey;
+$primaryTextColor: $lightGrey;
+$secondaryTextColor: $blueGrey;
+
+$primaryButtonColor: $blueGrey;
+$invertedPrimaryButtonColor: $darkerGrey;
+$primaryButtonTextColor: $darkGrey;
+$invertedPrimaryButtonTextColor: $lightGrey;
+$primaryButtonHoverColor: $lightGrey;
+
+$linkColor: $blueGrey;
+$linkHoverColor: $lightGrey;
+
+$iconColor: #bdbdbd;
+$navArrowColor: $lightGrey;
+
+
+// FONTS
+
+%montserrat-semibold {
+  font-family: 'Montserrat', sans-serif;
+  font-weight: 600;
+}
+
+%fira-sans-light {
+  font-family: 'Fira Sans', sans-serif;
+  font-weight: 100;
+}
+
+%fira-sans-medium {
+  font-family: 'Fira Sans', sans-serif;
+  font-weight: 500;
+}
+
+%fira-mono-medium {
+  font-family: 'Fira Mono', monospace;
+  font-weight: 500;
+}
+
+// PARTIALS
+
+%flex-row {
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: row;
+}
+
+%flex-row-centered {
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: row;
+  align-items: center;
+}
+
+%flex-col {
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
+}
+
+%flex-col-centered {
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
+  justify-content: center;
+}
+
+// GRID
+
+$colWidth: 8.33%;
+$screenHeight: calc(100vh - 100px);
+
+.container-fluid {
+  padding-left: 10px;
+  padding-right: 10px;
+  max-width: 1120px;
+}
+
+#hiring-page-container {
+  padding: 48px;
+}
+
+section {
+  padding-top: 24px;
+  padding-left: 15px;
+  padding-right: 15px;
+
+  @include media-breakpoint-up(md) {
+
+    @media (orientation: landscape) {
+      min-height: $screenHeight;
+    }
+    padding-top: 140px; //compensate for fixed header + same for title and other sections
+    padding-left: 0;
+    padding-right: 0;
+  }
+}
+
+.col, [class*="col-"] {
+  padding-right: 10px;
+  padding-left: 10px;
+
+  &:not(.section-title) {
+    margin-bottom: 20px;
+  }
+}
+
+.row {
+  margin-left: -10px;
+  margin-right: -10px;
+}
+
+// TYPO
+
+h1 {
+  @extend %montserrat-semibold;
+  color: $secondaryTextColor;
+  text-transform: uppercase;
+  line-height: 1.04;
+  letter-spacing: 2px;
+  font-size: 42px;
+  margin: 0;
+
+  .highlight {
+    color: $primaryTextColor;
+  }
+
+  @include media-breakpoint-up(sm) {
+    font-size: 80px;
+  }
+
+  @include media-breakpoint-up(md) {
+    font-size: 90px;
+  }
+
+  @include media-breakpoint-up(lg) {
+    font-size: 100px;
+  }
+}
+
+
+#hiring-page-container h1 {
+  text-align: center;
+  font-size: 48px
+}
+
+h2 {
+  @extend %fira-sans-light;
+  font-size: 24px;
+  line-height: 1.33;
+}
+
+#hiring-page-container h2 {
+  text-align: center;
+}
+
+h3 {
+  @extend %fira-mono-medium;
+  color: $secondaryTextColor;
+  text-transform: uppercase;
+  letter-spacing: 2.7px;
+  font-size: 16px;
+  line-height: 2;
+}
+
+h4 {
+  @extend %montserrat-semibold;
+  color: $secondaryTextColor;
+  text-transform: uppercase;
+  line-height: 1.5;
+  letter-spacing: 3px;
+  font-size: 14px;
+
+  @include media-breakpoint-up(md) {
+    font-size: 16px;
+  }
+}
+
+a {
+  @extend %fira-sans-medium;
+  color: $linkColor;
+  text-decoration: none;
+
+  &:hover, &:active {
+    color: $linkHoverColor;
+  }
+}
+
+// STYLES
+
+html {
+  margin: 0;
+  overflow-x: hidden;
+}
+
+body {
+  margin: 0;
+  overflow-x: hidden;
+  background-color: $mainBackgroundColor;
+  color: $primaryTextColor;
+  font-size: 16px;
+  @extend %fira-sans-light;
+}
+
+.header-bar {
+  width: 100%;
+  height: 100px;
+  z-index: 10;
+  background-color: $mainBackgroundColor;
+
+  @include media-breakpoint-up(md) {
+    position: fixed;
+    top: 0;
+    left: 0;
+  }
+}
+ 
+.header-bar-inner {
+  width: 100%;
+  max-width: 1200px;
+  height: 100px;
+  margin: auto;
+  padding: 0 15px;
+  @extend %flex-row-centered;
+}
+
+.header-brand {
+  height: 40px;
+  @extend %flex-row-centered;
+  @extend %montserrat-semibold;
+  color: $primaryTextColor;
+  font-size: 24px;
+
+  svg {
+    width: 40px;
+    height: 40px;
+    margin-left: 15px;
+    margin-right: 15px;
+    fill: $primaryTextColor;
+  }
+
+  @include media-breakpoint-up(md) {
+    height: 50px;
+    font-size: 32px;
+
+    svg {
+      width: 50px;
+      height: 50px;
+    }
+  }
+}
+
+.header-nav {
+  height: 20px;
+  width: 40%;
+  justify-content: space-evenly;
+  margin-left: auto;
+  @extend %flex-row-centered;
+
+  a {
+    @extend %fira-mono-medium;
+    letter-spacing: 3px;
+    font-size: 14px;
+    margin: 0 14px;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+}
+
+.section-header {
+  margin-bottom: 12px;
+
+  @include media-breakpoint-up(lg) {
+    margin-bottom: -48px;
+  }
+}
+
+.section-title {
+  h3 {
+    display: inline-block;
+    white-space: nowrap;
+
+    @include media-breakpoint-up(md) {
+      margin: 0;
+      transform: rotate(-90deg) translateX(-100%);
+      transform-origin: top left;
+    }
+  }
+}
+
+.section-intro {
+  z-index: 2;
+
+  p {
+    margin: 0;
+    font-size: 24px;
+  }
+}
+
+.nav-arrow-container {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.nav-arrow {
+  width: 0; 
+  height: 0; 
+  border-left: 9px solid transparent;
+  border-right: 9px solid transparent;
+
+  &.down {
+    border-top: 12px solid $navArrowColor;
+  }
+
+  &.up {
+    border-bottom: 12px solid $navArrowColor;
+  }
+}
+
+.box {
+  background-color: $boxBackgroundColor;
+  position: relative;
+
+  &:before{
+    content: "";
+    display: block;
+    padding-top: 100%;  //ratio of 1:1
+  }
+
+  .box-content {
+    position:  absolute;
+    @extend %flex-col;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    font-size: 14px;
+
+    padding: 10%;
+    padding-top: 20%;
+
+    p {
+      margin: 0;
+      line-height: 1.5;
+    }
+
+    svg {
+      flex-shrink: 0;
+      fill: $iconColor;
+      width: 25px;
+      height: 25px;
+    }
+
+    &.with-icon {
+      padding-top: 12%;
+    }
+
+    @include media-breakpoint-up(sm) {
+      font-size: 24px;
+      h4 {
+        font-size: 20px;
+      }
+      svg {
+        width: 50px;
+        height: 50px;
+      }
+    }
+
+    @include media-breakpoint-up(md) {
+      font-size: 16px;
+      h4 {
+        font-size: 14px;
+      }
+      svg {
+        width: 25px;
+        height: 25px;
+      }
+    }
+
+    @include media-breakpoint-up(lg) {
+      padding-left: $colWidth * 2; // boxes are half-sized, so this equals one full size grid col
+      padding-right: $colWidth * 2;
+      padding-bottom: $colWidth * 2;
+
+      svg {
+        width: 40px;
+        height: 40px;
+      }
+    }
+
+    @include media-breakpoint-up(xl) {
+      padding-top: 30%;
+
+      svg {
+        width: 50px;
+        height: 50px;
+      }
+
+      &.with-icon {
+        padding-top: 20%;
+      }
+    }
+  }
+
+  &.highlight {
+    background-color: $highlightBackgroundColor;
+
+    .box-content {
+      padding-top: 0;
+      padding-bottom: 0;
+      align-items: center;
+      justify-content: center;
+
+      .main-cta {
+        width: 100%;
+      }
+    }
+
+    h3 {
+      color: $highlightTextColor;
+    }
+  }
+}
+
+.hero {
+  .title {
+    z-index: 2;
+  }
+
+  .box {
+    margin-top: 75px;
+
+    .box-content {
+      padding-top: 30%;
+      padding-bottom: 10%;
+    }
+
+    .box-content p {
+      font-size: 24px;
+      line-height: 1.33;
+    }
+
+    .box-content h3 {
+      margin-top: auto;
+    }
+
+    @include media-breakpoint-down(md) {
+      margin-top: 0;
+
+      .box-content {
+        p {
+          font-size: 20px;
+        }
+        padding-top: 40%;
+        padding-left: 30%;
+        padding-right: 10%;
+        padding-bottom: 10%;
+      }
+    }
+  }
+
+  .hero-content-compact {
+    p { 
+      font-size: 24px;
+    }
+
+    h3 {
+      margin-top: 40px;
+    }
+  }
+}
+
+.contact-link {
+  font-size: 18px;
+}
+
+.primary-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  cursor: pointer;
+  height: 64px;
+  padding: 0;
+  @extend %fira-sans-medium;
+  background-color: $primaryButtonColor;
+  color: $primaryButtonTextColor;
+  line-height: 1.5;
+  font-size: 20px;
+
+  &:hover {
+    background-color: $primaryButtonHoverColor;
+    color: $primaryButtonTextColor;
+  }
+
+  &.inverted {
+    background-color: $invertedPrimaryButtonColor;
+    color: $invertedPrimaryButtonTextColor;
+
+    &:hover {
+      color: $primaryButtonTextColor;
+      background-color: $primaryButtonHoverColor;
+    }
+  }
+}
+
+.main-cta {
+  width: 75%;
+}
+
+.avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+
+.skills-container {
+  position: relative;
+  margin-top: 100px;
+
+  &:before {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 9600px;
+    transform: translateX(-4800px);
+    background-color: $darkerGrey;
+  }
+  @include media-breakpoint-down(sm) {
+    padding-left: 15px;
+    padding-right: 15px;
+
+    h4 {
+      text-align: center;
+    }
+
+    .skills-container-inner {
+      justify-content: center;
+    }
+  }
+}
+
+.skill-box {
+  width: 100px;
+  height: 48px;
+  @extend %fira-mono-medium;
+  font-size: 12px;
+  background-color: $darkGrey;
+  color: $secondaryTextColor;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin: 15px;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.map-container {
+  flex: 1;
+  background-image: url("https://maps.googleapis.com/maps/api/staticmap?key=AIzaSyBnoxcahuS5ZqeLkNBVPkKSh5Of5D_yx1Y&center=47.493089,19.055375&zoom=15&format=png&maptype=roadmap&markers=color:0x90a4ae%7C47.493089,19.055375&size=600x600&style=element:labels.text.fill%7Ccolor:0x90a4ae&style=element:labels.text.stroke%7Cvisibility:off&style=feature:landscape%7Celement:geometry.fill%7Ccolor:0x070809&style=feature:landscape.man_made%7Cvisibility:off&style=feature:poi%7Cvisibility:off&style=feature:road%7Celement:geometry.fill%7Ccolor:0x191b1f&style=feature:road%7Celement:geometry.stroke%7Cvisibility:off&style=feature:road.arterial%7Celement:geometry.stroke%7Ccolor:0x070809%7Cvisibility:on&style=feature:road.local%7Celement:labels%7Cvisibility:off&style=feature:transit%7Cvisibility:off&style=feature:water%7Ccolor:0x191b1f");
+  background-repeat: no-repeat;
+  background-position: 50% 50%;
+  background-size: cover;
+  padding-bottom: 100%;
+}
+
+.contact-details {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+
+  @include media-breakpoint-up(md) {
+    padding-left: $colWidth;
+  }
+
+  h3 {
+    color: $primaryTextColor;
+  }
+}
+
+.footer {
+  @extend %fira-mono-medium;
+  text-transform: uppercase;
+  font-size: 14px;
+  color: $secondaryTextColor;
+  letter-spacing: 3.1px;
+  height: 60px;
+  line-height: 60px;
+  margin-top: 32px;
+  text-align:center;
+  background-color: $darkerGrey;
+}
+
+.full-page {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+
+  h1 {
+    font-color: $primaryTextColor;
+    text-align: center;
+    font-size: 48px;
+  }
+
+  p {
+    font-size: 22px;
+  }
+}
