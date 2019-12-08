@@ -13,6 +13,7 @@ const paths = {
   	html: './src/*.html',
     sass: './src/main.scss',
     robots: './src/robots.txt',
+    cname: './src/CNAME'
   },
   dist: {
   	root: './dist',
@@ -36,6 +37,11 @@ function robots() {
     .pipe(gulp.dest(paths.dist.root));
 }
 
+function cname() {  //for Github Pages
+  return gulp.src(paths.src.cname)
+    .pipe(gulp.dest(paths.dist.root));
+}
+
 function images() {
   return gulp.src(paths.src.images)
     .pipe(gulp.dest(paths.dist.public));
@@ -48,7 +54,7 @@ function styles() {
 		.pipe(gulp.dest(paths.dist.public));
 }
 
-const build = gulp.series(clean, gulp.parallel(html, robots, images, styles));
+const build = gulp.series(clean, gulp.parallel(html, robots, cname, images, styles));
 
 // DEVELOPMENT SERVER
 

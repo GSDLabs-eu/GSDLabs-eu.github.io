@@ -15,7 +15,7 @@
   "scripts": {
     "build": "gulp build",
     "start": "gulp dev-server",
-    "deploy": "git subtree push --prefix dist origin master"
+    "deploy": "npm run build && git subtree push --prefix dist origin master"
   },
   "author": "GSDLabs <info@gsdlabs.eu>",
   "license": "UNLICENSED",
