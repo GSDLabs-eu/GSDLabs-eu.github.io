@@ -27,6 +27,6 @@
     "gulp": "^4.0.0",
     "gulp-cli": "^2.0.1",
     "gulp-postcss": "^8.0.0",
-    "gulp-sass": "^4.0.1"
+    "gulp-sass": "^5.1.0"
   }
 }
